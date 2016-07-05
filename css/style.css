@@ -1,0 +1,139 @@
+html{
+	background: #101010;
+	overflow: hidden;
+}
+
+.proto{
+	font-family: 'Montserrat', sans-serif;
+	color:  #fff;
+	font-weight: 700;
+}
+
+.proto2{
+	font-family: 'Montserrat', sans-serif;
+	color:  #fff;
+	font-weight: 400;
+}
+
+/*
+.viewport {
+	position:relative;
+	display: block;
+	
+	transform: translateY(50%);
+	width:640px;
+	height:480px;
+}
+*/
+
+@keyframes rotate {
+	0% { transform: rotate(0deg);   }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes counterRotate {
+	0% { transform: rotate(0deg);   }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes backandforth {
+	0% { left:0; } 
+   50% { left:100%; } 
+  100% { left:0; }
+}
+
+/* Circle Path Prototype */
+
+.object {
+	position: absolute;
+	
+	left: 0px;
+	width: 150px;
+	height: 150px;
+	
+	-webkit-animation: myOrbit 2s linear infinite;
+	-moz-animation: myOrbit 2s linear infinite;
+	-o-animation: myOrbit 2s linear infinite;
+    animation: myOrbit 2s linear infinite;
+	
+	background: url('images/planet1.png') no-repeat center;
+}
+
+@-webkit-keyframes myOrbit {
+    from { -webkit-transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to   { -webkit-transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@-moz-keyframes myOrbit {
+    from { -moz-transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to   { -moz-transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@-o-keyframes myOrbit {
+    from { -o-transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to   { -o-transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@keyframes myOrbit {
+    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+
+/* Ellipse Path Prototype */
+
+/*
+.moveX {
+	position:absolute;
+	height:2px;
+	width:0px;
+	top:240px;
+	left:0px;
+	-webkit-animation: mX 10s ease-in-out 0s infinite;
+	animation: mX 10s ease-in-out 0s infinite;
+}
+.moveY {
+	position:absolute;
+	width:500px;
+	height:100px; 
+	top:-50px;
+	-webkit-animation: mO 1s linear 0s infinite;
+	animation: mO 10s linear 0s infinite;
+}
+.elipsoid {  
+	position:absolute;
+	background:url("images/planet1.png") no-repeat center;
+
+	animation: 0.5s rotate infinite linear;
+	  
+	top: 0px;
+	left: 0px;
+	width: 100px;
+	height: 100px;
+	border-radius:50%;
+}
+
+@keyframes rotate {
+	0% { transform: rotate(0deg);   }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mO {
+	0% { transform: rotate(0deg);   }
+  100% { transform: rotate(360deg); }
+}
+@-webkit-keyframes mO {
+	0% { -webkit-transform: rotate(0deg);   }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes mX {
+	0% { transform: translateX(0px);   }
+   50% { transform: translateX(500px); }
+  100% { transform: translateX(0px);   }
+}
+@-webkit-keyframes mX {
+	0% { -webkit-transform: translateX(0px)    }
+   50% { -webkit-transform: translateX(500px); }
+  100% { -webkit-transform: translateX(0px)    }
+}
+*/

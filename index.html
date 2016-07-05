@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <title>mosgWorld</title>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	
+	<script src="js/app.js"></script> 
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	<script>
+	
+	var starList = ["0"];
+	var starCount = starList.length;
+	
+	var starNames = ["Empire"];
+	var starType = ["Type A Dwarf"];
+	
+	//List a number for each planet, starting from 0
+	var planetList = ["0", "1", "2", "3", "4", "5", "6"];
+	var planetCount = planetList.length;
+	
+	var planetOrbitType = ["static", "binary", "binary", "static", "static", "static", "static"];
+	var planetOrbitRelationship = ["", "3", "2", "", "", "", ""];
+	
+	var planetOrbitShape = ["circle", "circle", "circle", "circle", "circle", "circle", "ellipse"];
+	var planetOrbitShapeDegree = ["0", "0", "0", "0", "0", "0", "4"];
+	var planetOrbitShift = ["0", "0", "0", "0", "0", "0", "3"];
+	
+	var planetSpinType = ["locked", "spin", "locked", "spin", "spin", "spin", "locked"];
+	var planetSpinDegree = ["0", "5", "0", "7", "2", "4", "1"];
+	var planetSpinDirection = ["", "left", "", "right", "right", "left", "right"];
+	
+	var planetMoonCount = ["0", "0", "0", "1", "4", "5", "1"];
+	
+	var planetNames = ["Malengora", "Nuvini", "Birigot", "Terrik", "Hubble", "Kyrilan Charter", "Miigh'n"];
+	var planetType = ["Rocky Planet", "NuEarth", "Iron Planet", "Carbon Planet", "Super Jupitor", "Red Dwarf", "Ice Pdeudo-Dwarf"];
+	
+	var locationList = ["0", "1"];
+	var locationCount = locationList.length;
+	
+	function displayPlanets(){
+	
+		var width = window.innerWidth;
+		var height = window.innerHeight;
+		
+		var spacing = ((width/planetCount)/width)*80;
+		
+		var spacingCount = 0;
+		
+		//Loop that generates ORBIT PATHS for PLANETS
+		for (var x = 0; x < planetCount; x++){
+			
+			var path = "";
+			
+			path = "<div id='planetPath" + x + "' style='";
+			
+			var pseudoPadding = 50 - planetCount;
+
+			path += "position:absolute; top: " + pseudoPadding + "%; bottom: " + pseudoPadding + "%; width: "+ (spacingCount*2) +"%; left: -"+ (spacingCount) +"%; border-radius: 50%; outline: #fff solid thin;' >";
+			
+			path += "</div>";
+			
+			spacingCount += spacing;
+			
+			document.write(path);
+
+		}
+		
+		spacing = ((width/planetCount)/width)*80;
+		
+		spacingCount = 0;
+		
+		//Loop that generates PLANETS
+		for (var x = 0; x < planetCount; x++){
+		
+		/*
+		
+			<span class='moveX'>
+				<div class='moveY'>
+				<span class="elipsoid" />
+				</div>
+			</span>
+		
+		*/
+			
+			var planet;
+			
+			//Set up div for planet in the variable 'planet'
+			planet = "<div id='planet" + x + "' style='";
+			
+			if (planetOrbitType[x] == "static"){
+				//Generate styles for a div that remains in a single position
+				planet += "position:absolute; background: url(css/images/planet" + x + ".png) no-repeat center; top: 40%;transform: rotate(90deg); width: 200px; height: 200px; left:" + spacingCount + "%;";
+			}
+			else if (planetOrbitType[x] == "binary"){
+				//Generate styles for a div that revolves around a point
+				planet += "position:absolute; top: 40%; width: 200px; height: 200px; left:" + spacingCount + "%; animation: myOrbit 10s linear infinite;";
+			}
+			
+			if (planetOrbitShape[x] == "circle"){
+				//Generate styles for a div that remains in a single position
+			}
+			else if (planetOrbitShape[x] == "ellipse"){
+				//Generate styles for a div that moves back and forth along an x-axis track
+				var ellipseDegree = planetOrbitShapeDegree[x];
+				planet += "";
+			}
+			
+			planet += "'>";
+			var spin = "";
+			
+			if (planetOrbitType[x] == "binary"){
+				if (planetSpinType[x] == "spin"){
+					planet += "<div id='planet" + x + "img' style='background: url(css/images/planet" + x + ".png) no-repeat center; transform: rotate(90deg); width: 200px; height: 200px;'>" + spinCalc(spin) + "</div>";
+				}
+				else{
+					planet += "<div id='planet" + x + "img' style='background: url(css/images/planet" + x + ".png) no-repeat center; transform: rotate(90deg); width: 200px; height: 200px;'></div>";
+				}
+			}
+			else {
+				if (planetSpinType[x] == "spin"){
+					planet += spinCalc(spin);
+				}
+			}
+			
+			function spinCalc(spin){
+					
+				var direction;
+				if (planetSpinDirection[x] == "left"){
+					direction = "counterRotate";
+				}
+				else if (planetSpinDirection[x] == "right"){
+					direction = "rotate";
+				}
+				
+				spin = "<div id='planet" + x + "tex' style='position:absolute; background: url(css/images/planet" + x + "tex.png) no-repeat center; width: 200px; height: 200px; animation: " + direction + " " + planetSpinDegree[x] + "s linear infinite;' ></div>"
+				return spin;
+				
+			}
+			
+			planet += "</div>";
+			
+			spacingCount += spacing;
+			
+			document.write(planet);
+			
+		}
+		
+	}
+
+	</script>
+	
+  </head>
+  
+   <body>
+	
+	<span class="proto">System Simulator 0.1</span> <br> <span class="proto2">prokhorVLG</span>
+	
+	<script>
+	displayPlanets();
+	</script>
+	
+	</body>
+</html>
